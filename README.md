@@ -22,7 +22,7 @@ ENV MYSQL_ROOT_PASSWORD=password123
 
 COPY my.cnf /etc/mysql/my.cnf
 
-EXPOSE 3306
+EXPOSE 3307
 
 CMD ["mysqld"]
 ```
@@ -40,7 +40,7 @@ This command builds a Docker image from the Dockerfile and tags it with the name
 3. Start a new Docker container from the titanicdb_img image by running the following command:
 
 ```css
-docker run -p 3306:3306 --name titanicdb-container -d titanicdb_img
+docker run -p 3307:3307 --name titanicdb-container -d titanicdb_img
 ```
 
 This command maps port 3306 on the Docker host to port 3306 inside the container, and runs the MySQL server process as the container's main command.
