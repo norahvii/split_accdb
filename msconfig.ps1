@@ -29,3 +29,11 @@ Start-Process -FilePath "msiexec.exe" -ArgumentList "/i `"$mysqlDriverDownloadPa
 # Launch the ODBC Data Source Administrator program as an administrator
 Start-Process "odbcad32.exe" -Verb RunAs
 
+# Allow Inbound SQL traffic on Windows
+New-NetFirewallRule -DisplayName "Allow MySQL traffic on port 3306" -Direction Inbound -LocalPort 3306 -Protocol TCP -Action Allow
+
+# Allow Outbound SQL traffic on Windows
+New-NetFirewallRule -DisplayName "Allow MySQL traffic on port 3306" -Direction Outbound -LocalPort 3306 -Protocol TCP -Action Allow
+
+# Delete the leftover file
+Remove-Item -Path ".\mysql-connector-odbc-8.0.32-winx64.msi"
